@@ -1,0 +1,43 @@
+bawahan_langsung(adi, burhan).
+bawahan_langsung(burhan, bahrun).
+bawahan_langsung(burhan, bisrin).
+bawahan_langsung(bahrun, fahri).
+bawahan_langsung(bahrun, farah).
+bawahan_langsung(bisrin, ferdi).
+atasan_langsung(X, Y):-bawahan_langsung(Y, X).
+anak_buah(X, Y):-atasan_langsung(Y, X).
+anak_buah(X, Y):-atasan_langsung(Y, Z),anak_buah(X, Z).
+
+
+anak(anto, ita).
+anak(anto, budi).
+anak(anto, ida).
+anak(wati, ita).
+anak(wati, budi).
+anak(wati, ida).
+anak(ita, hadi).
+anak(deni, hadi).
+anak(budi, dina).
+anak(ida, andi).
+anak(ida,rita).
+anak(rudi, andi).
+anak(rudi, rita).
+lakilaki(deni).
+lakilaki(budi).
+lakilaki(rudi).
+lakilaki(anto).
+lakilaki(hadi).
+lakilaki(andi).
+perempuan(wati).
+perempuan(ita).
+perempuan(ida).
+perempuan(rita).
+perempuan(dina).
+orang_tua(X, Y):-anak(Y, X).
+saudara_lakilaki(X, Y):-lakilaki(Y), anak(Z, Y), lakilaki(Z), orang_tua(X, Z).
+saudara_perempuan(X, Y):-perempuan(Y), anak(Z, Y), perempuan(Z), orang_tua(X, Z).
+paman(X, Y):-saudara_lakilaki(Z, Y), orang_tua(X, Z).
+bibi(X, Y):-saudara_perempuan(Z, Y), orang_tua(X, Z).
+kakek(X, Y):-lakilaki(Y), orang_tua(Z, Y), orang_tua(X, Z).
+nenek(X, Y):-perempuan(Y), orang_tua(Z, Y), orang_tua(X, Z).
+sepupu(X, P):-anak(A, L), anak(B, P), bibi(X, B), paman(X, A).
