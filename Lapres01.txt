@@ -8,7 +8,6 @@ atasan_langsung(X, Y):-bawahan_langsung(Y, X).
 anak_buah(X, Y):-atasan_langsung(Y, X).
 anak_buah(X, Y):-atasan_langsung(Y, Z),anak_buah(X, Z).
 
-
 anak(anto, ita).
 anak(anto, budi).
 anak(anto, ida).
@@ -34,8 +33,8 @@ perempuan(ida).
 perempuan(rita).
 perempuan(dina).
 orang_tua(X, Y):-anak(Y, X).
-saudara_lakilaki(X, Y):-lakilaki(Y), anak(Z, Y), lakilaki(Z), orang_tua(X, Z).
-saudara_perempuan(X, Y):-perempuan(Y), anak(Z, Y), perempuan(Z), orang_tua(X, Z).
+saudara_lakilaki(X, Y):-lakilaki(Y), anak(Z, Y), lakilaki(Z), orang_tua(X, Z), Y\==X.
+saudara_perempuan(X, Y):-perempuan(Y), anak(Z, Y), perempuan(Z), orang_tua(X, Z), Y\==X.
 paman(X, Y):-saudara_lakilaki(Z, Y), orang_tua(X, Z).
 bibi(X, Y):-saudara_perempuan(Z, Y), orang_tua(X, Z).
 kakek(X, Y):-lakilaki(Y), orang_tua(Z, Y), orang_tua(X, Z).
