@@ -79,3 +79,16 @@ saudara(X, Y):-anak(Z, Y),laki(Z),orang_tua(X, Z), X\==Y.
 ipar(X, Y):-saudara(Z, Y), menikah(X, Z).
 nenek_moyang(X, Y):-anak(Z,X), anak(Y, Z).
 nenek_moyang(X, Y):-anak(Y, Z), nenek_moyang(X, Z).
+
+meninggal(X):-korban(X).
+sex(X, perempuan):-korban(X).
+mengenal(jono, Y):-korban(Y).
+mengenal(suryo, Y):-korban(Y).
+mengenal(X, toni):-korban(X).
+mengenal(X, jono):-korban(X).
+mengenal(X, Y):-korban(Y), pembunuh(X), Y\==X.
+korban(susi).
+membenci(jono, susi).
+membenci(suryo, toni).
+membenci(toni, jono).
+pembunuh(Z):-membenci(Y,Z), mengenal(X, Y), korban(X), Z\==X.
