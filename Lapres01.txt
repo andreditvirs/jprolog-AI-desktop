@@ -39,4 +39,5 @@ paman(X, Y):-saudara_lakilaki(Z, Y), orang_tua(X, Z).
 bibi(X, Y):-saudara_perempuan(Z, Y), orang_tua(X, Z).
 kakek(X, Y):-lakilaki(Y), orang_tua(Z, Y), orang_tua(X, Z).
 nenek(X, Y):-perempuan(Y), orang_tua(Z, Y), orang_tua(X, Z).
-sepupu(X, P):-anak(A, L), anak(B, P), bibi(X, B), paman(X, A).
+sepupu(X, P):-anak(B, P), bibi(X, B).
+sepupu(X, L):-anak(A, L), paman(X, A).
