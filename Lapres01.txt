@@ -41,3 +41,39 @@ kakek(X, Y):-lakilaki(Y), orang_tua(Z, Y), orang_tua(X, Z).
 nenek(X, Y):-perempuan(Y), orang_tua(Z, Y), orang_tua(X, Z).
 sepupu(X, P):-anak(B, P), bibi(X, B).
 sepupu(X, L):-anak(A, L), paman(X, A).
+
+anak(rudi, roy).
+anak(asiah, roy).
+anak(roy, ali).
+anak(uun, ali).
+anak(roy, imas).
+anak(uun, imas).
+anak(ali, siti).
+anak(nuni, siti).
+anak(ali, sukri).
+anak(nuni, sukri).
+anak(imas, jaya).
+anak(budi, jaya).
+laki(rudi).
+laki(roy).
+laki(budi).
+laki(ali).
+laki(jaya).
+laki(sukri).
+perempuan(asiah).
+perempuan(uun).
+perempuan(nuni).
+perempuan(imas).
+menikah(rudi, asiah).
+menikah(asiah, rudi).
+menikah(roy,uun).
+menikah(uun,roy).
+menikah(ali, nuni).
+menikah(nuni, ali).
+menikah(imas, budi).
+menikah(budi, imas).
+orang_tua(X, Y):-anak(Y, X).
+kakek(X, Y):-laki(Y), orang_tua(Z, Y),orang_tua(X, Z).
+nenek(X, Y):-perempuan(Y), orang_tua(Z, Y),orang_tua(X, Z).
+saudara(X, Y):-anak(Z, Y),laki(Z),orang_tua(X, Z), X\==Y.
+ipar(X, Y):-saudara(Z, Y), menikah(X, Z).
