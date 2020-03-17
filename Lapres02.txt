@@ -1,0 +1,7 @@
+lulusanSD(anas).
+wni(anas).
+lahirTahun(anas, 1952).
+pns(X):-wni(X), lulusanSD(X), lahirTahun(X, BIRTH), tahunPNS(X, PNSYEAR), (PNSYEAR - BIRTH) < 35.
+tahunPNS(anas, 1985).
+pensiun(X):-pns(X), lahirTahun(X, AGE), tahunIni(NOW), (NOW - AGE) >= 60.
+tahunIni(2005).
