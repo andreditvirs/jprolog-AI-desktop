@@ -17,3 +17,32 @@ subclass(Class1, Class2):-adalah(Class1, Class2).
 subclass(Class1, Class2):-adalah(Class1, Class3), adalah(Class3, Class2).
 value(Obj, Property, Value):-attribute(Obj, Property, Value).
 value(Obj, Property, Value):-adalah(Obj, Class), attribute(Class, Property, Value).
+
+isa(mammal, animal).
+isa(bird, animal).
+isa(dog, mammal).
+isa(cat, mammal).
+isa(pet, dog).
+isa(pet,canary).
+isa(pet, cat).
+isa(canary, bird).
+isa(penguin, bird).
+instance(garfield, cat).
+instance(sylvestor, cat).
+instance(tweety, canary).
+instance(opus, penguin).
+attribute(cat, eats, cat-food).
+attribute(mammal, has-part, tail).
+attribute(bird, eats, seeds).
+attribute(bird, fly, true).
+attribute(bird, has-part, wing).
+attribute(bird, has-part, feather).
+attribute(bird, has-part, tail).
+attribute(garfield, eats, lasagna).
+attribute(opus, fly, no).
+subclass(Class1, Class2):-isa(Class1, Class2).
+subclass(Class1, Class2):-isa(Class1, Class3), isa(Class3, Class2).
+aninstance(Obj, Class):-instance(Obj, Class).
+aninstance(Obj, Class):-instance(Obj, Class1), subclass(Class1, Class).
+value(Obj, Property, Value):-attribute(Obj, Property, Value).
+value(Obj, Property, Value):-aninstance(Obj, Class), attribute(Class, Property, Value).
