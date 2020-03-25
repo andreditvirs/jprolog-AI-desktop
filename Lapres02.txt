@@ -5,3 +5,15 @@ pns(X):-wni(X), lulusanSD(X), lahirTahun(X, BIRTH), tahunPNS(X, PNSYEAR), (PNSYE
 tahunPNS(anas, 1985).
 pensiun(X):-pns(X), lahirTahun(X, AGE), tahunIni(NOW), (NOW - AGE) >= 60.
 tahunIni(2005).
+
+adalah(silkie, ayam).
+adalah(ayam, unggas).
+adalah(unggas, hewan).
+adalah(bebek, unggas).
+attribute(unggas, memiliki, sayap).
+attribute(unggas, makan, biji-bijian).
+attribute(hewan, bernafas, udara).
+subclass(Class1, Class2):-adalah(Class1, Class2).
+subclass(Class1, Class2):-adalah(Class1, Class3), adalah(Class3, Class2).
+value(Obj, Property, Value):-attribute(Obj, Property, Value).
+value(Obj, Property, Value):-adalah(Obj, Class), attribute(Class, Property, Value).
