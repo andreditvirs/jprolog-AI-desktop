@@ -46,3 +46,28 @@ aninstance(Obj, Class):-instance(Obj, Class).
 aninstance(Obj, Class):-instance(Obj, Class1), subclass(Class1, Class).
 value(Obj, Property, Value):-attribute(Obj, Property, Value).
 value(Obj, Property, Value):-aninstance(Obj, Class), attribute(Class, Property, Value).
+
+isa(vet, person).
+isa(pet-canaries, birds).
+isa(ravens, birds).
+akindof(marry, person).
+akindof(cheepy, pet-canaries).
+akindof(tweety, pet-canaries).
+akindof(edgar, ravens).
+akindof(sally, vet).
+vet(cheepy, sally).
+can(birds, flying).
+has(birds, feather).
+hascolor(pet-canaries, yellow).
+hascolor(ravens, black).
+owned(tweety, john).
+owned(cheepy, marry).
+subclass(Class1,Class2) :- isa(Class1,Class2). 
+subclass(Class1,Class2) :- isa(Class1,Class3), subclass(Class3,Class2).
+aninstance(Obj,Class) :- akindof(Obj,Class). 
+aninstance(Obj,Class) :- akindof(Obj,Class1), subclass(Class1,Class).
+attribute(Obj,X) :- aninstance(Obj,Class),vet(Class,X).
+attribute(Obj,X) :- aninstance(Obj,Class),can(Class,X).
+attribute(Obj,X) :- aninstance(Obj,Class),has(Class,X).
+attribute(Obj,X) :- aninstance(Obj,Class),hascolor(Class,X).
+attribute(Obj,X) :- aninstance(Obj,Class),owned(Class,X).
