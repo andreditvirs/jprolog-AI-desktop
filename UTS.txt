@@ -1,0 +1,31 @@
+anak(joko, jono).
+anak(joko, joni).
+anak(joko, jujuk).
+anak(jono, hadi).
+anak(jono, ita).
+anak(joni, rudi).
+anak(joni, dewi).
+anak(jujuk, amir).
+anak(jujuk, tina).
+perempuan(ita).
+perempuan(dewi).
+perempuan(tina).
+perempuan(jujuk).
+laki-laki(hadi).
+laki-laki(rudi).
+laki-laki(amir).
+laki-laki(joko).
+laki-laki(jono).
+laki-laki(joni).
+orang_tua(X, Y):-anak(Y, X).
+saudara_laki-laki(X, Y):-laki-laki(Y), anak(Z, Y), orang_tua(X, Z), Y\==X.
+saudara_perempuan(X, Y):-perempuan(Y), anak(Z, Y), orang_tua(X, Z), Y\==X.
+paman(X, Y):-saudara_laki-laki(Z, Y), orang_tua(X, Z).
+bibi(X, Y):-saudara_perempuan(Z, Y), orang_tua(X, Z).
+kakek(X, Y):-laki-laki(Y), orang_tua(Z, Y), orang_tua(X, Z).
+nenek(X, Y):-perempuan(Y), orang_tua(Z, Y), orang_tua(X, Z).
+sepupu(X, P):-anak(B, P), bibi(X, B).
+sepupu(X, L):-anak(A, L), paman(X, A).
+turunan(X, Y):-orang_tua(Y, X).
+turunan(X, Y):-orang_tua(Y, Z), turunan(X, Z).
+cucu(X, Y):-orang_tua(Y, Z), orang_tua(Z, X).
